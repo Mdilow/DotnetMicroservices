@@ -1,3 +1,4 @@
+using Discount.Grpc.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -12,6 +13,10 @@ namespace Discount.Grpc
     {
         public static void Main(string[] args)
         {
+            var host = CreateHostBuilder(args).Build();
+            host.MigrateDatabase<Program>();
+            host.Run();
+
             CreateHostBuilder(args).Build().Run();
         }
 
